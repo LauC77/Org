@@ -11,7 +11,7 @@ const Footer=()=>{
         </a>
     </div>
     <img className="footer-logo"src='/img/Logo.png' alt='org' />
-    <strong> Laura Cañon &copy; 2023</strong>
+    <strong> Laura Cañon &copy;2023</strong>
 </footer>
 }
 export default Footer
