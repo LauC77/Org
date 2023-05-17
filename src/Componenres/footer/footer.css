@@ -13,5 +13,22 @@
 }
 
 .redes img{
+    width: 3rem;
     padding: 0px 15px;
 }
+.footer strong{
+    font-size: 100%;
+}
+@media screen and (max-width:768px){
+   
+    .footer strong{
+        font-size: 1rem;
+        text-align: center;
+    } 
+    .footer-logo{
+        width: 3rem;
+        padding: 0px 15px;
+    }
+}
+
+   

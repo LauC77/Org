@@ -3,18 +3,15 @@ import "./footer.css"
 const Footer=()=>{
     return <footer className='footer' style={{ backgroundImage: "url(/img/footer.png)" }}>
     <div className='redes'>
-        <a href=''>
-            <img src="/img/facebook.png" alt='Facebook' />
+        <a href='https://github.com/LauC77'>
+            <img src="/img/github.png"alt='Github' />
         </a>
-        <a href='https://www.aluracursos.com/'>
-            <img src="/img/twitter.png" alt='twitter' />
-        </a>
-        <a href='https://www.aluracursos.com/'>
-            <img src="img/instagram.png" alt='instagram' />
+        <a href='https://www.linkedin.com/in/laura-valentina-ca%C3%B1on-castro/'>
+            <img src="/img/linkedin.png" alt='Linkedin' />
         </a>
     </div>
-    <img src='/img/Logo.png' alt='org' />
-    <strong>Desarrollado por Laura Cañon</strong>
+    <img className="footer-logo"src='/img/Logo.png' alt='org' />
+    <strong> Laura Cañon &copy; 2023</strong>
 </footer>
 }
 export default Footer

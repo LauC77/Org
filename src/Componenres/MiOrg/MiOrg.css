@@ -16,3 +16,24 @@
     right: 30%;
     cursor:pointer;
 }
+@media screen and (max-width:1300px) {
+    .title{
+        font-size:2.5rem; 
+    }
+    .orgSection img{
+        position: static;
+        width: 6rem;
+    }
+    
+}
+@media screen and (max-width:768px) {
+    .title{
+        font-size:2rem; 
+        text-align: center;
+        padding: 1rem;
+    }
+    .orgSection img{
+        position: static;
+        width: 5rem;
+    }
+}
