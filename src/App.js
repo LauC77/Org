@@ -3,7 +3,7 @@ import {v4 as uuid} from "uuid"
 import Header from './Componenres/Header/header';
 import Formulario from './Componenres/Formulario/Formulario';
 import MiOrg from './Componenres/MiOrg';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Equipo from './Componenres/Equipo';
 import Colaborador from './Componenres/Colaborador';
 import Footer from './Componenres/footer';
@@ -92,9 +92,25 @@ const [equipos, actualizarEquipos]= useState([
     titulo: "Innovación y Gestión",
     colorPrimario: "#FF8A29",
     colorSecundario: "#FFEEDF"
-  }
-
+  },
+  
 ])
+
+useEffect(() => {
+  const tarjetasHistorial = JSON.parse(localStorage.getItem('colaboradores'));
+  if (tarjetasHistorial) {
+    actualizarColaboradores(tarjetasHistorial);
+  }
+}, []);
+
+
+useEffect(() => {
+  const equiposHistorial = JSON.parse(localStorage.getItem('equipos'));
+  if (equiposHistorial) {
+    actualizarEquipos(equiposHistorial);
+  }
+}, []);
+
 
   const cambiarMostrar = () => {
     actualizarMostrar(!mostrarFormulario)
@@ -102,13 +118,17 @@ const [equipos, actualizarEquipos]= useState([
 
   const registrarColaborador=(Colaborador)=>{
   console.log("nuevo colab", Colaborador)
-  actualizarColaboradores([...colaboradores,Colaborador])
+  actualizarColaboradores([...colaboradores,{...Colaborador, id:uuid()}]);
+  localStorage.setItem('colaboradores', JSON.stringify([...colaboradores,Colaborador]));
   }
 
  const eliminarColaborador =(id)=>{
   const nuevosColaboradores= colaboradores.filter((colaborador)=> colaborador.id!==id)
-  actualizarColaboradores(nuevosColaboradores)
+  actualizarColaboradores(nuevosColaboradores);
+  localStorage.setItem('colaboradores', JSON.stringify(nuevosColaboradores));
  }
+
+
 
  const actualizarColor =(color, id)=>{
   console.log ("actualizado:_ ", color, id)
@@ -120,9 +140,11 @@ const [equipos, actualizarEquipos]= useState([
   })
   actualizarEquipos(equiposActualizados)
  }
+
 const crearEquipo=(nuevoEquipo)=>{
-  console.log(nuevoEquipo)
-  actualizarEquipos([...equipos,{...nuevoEquipo, id:uuid()}])
+  console.log("nuevoEquipo",nuevoEquipo);
+  actualizarEquipos([...equipos,{...nuevoEquipo, id:uuid()}]);
+  localStorage.setItem('equipos', JSON.stringify([...equipos,nuevoEquipo]));
 }
 
 const like =(id)=>{
@@ -134,6 +156,7 @@ const like =(id)=>{
     return colaborador
   })
   actualizarColaboradores(colabActualizados)
+  localStorage.setItem('colaboradores', JSON.stringify(colabActualizados));
 }
   
   return (
